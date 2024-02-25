@@ -4,27 +4,37 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 
 export default defineConfig({
+    server: {
+        hmr: {
+            host: 'localhost',
+        }
+    },
     plugins: [
         vue({
             template: {
                 transformAssetUrls: {
                     includeAbsolute: false,
+                    base: null,
                 },
             },
         }),
         laravel({
             buildDirectory: "app/client",
             input: [
+                // Client
                 'resources/client/app.js',
-                'resources/admin/scss/admin.scss',
-                'resources/admin/js/admin.js'
+                'resources/client/assets/scss/main.scss',
+                // Admin
+                'resources/admin/js/admin.js',
             ],
             refresh: true,
+            detectTls: 'inertia-vue.loc',
         }),
     ],
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'resources/client'),
+            "~": path.join(__dirname, "/node_modules"),
         }
-    }
+    },
 });

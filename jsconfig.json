@@ -4,6 +4,9 @@
     "paths": {
       "@/*": [
         "resources/client"
+      ],
+      "~/*": [
+        "node_modules"
       ]
     }
   }

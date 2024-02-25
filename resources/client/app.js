@@ -1,11 +1,7 @@
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 
-import MainPage from "@/pages/MainPage.vue";
-
-import './assets/scss/main.scss';
-
-createApp(MainPage).mount('#app');
+//import '@/assets/scss/main.scss';
 
 createInertiaApp({
     resolve: name => {

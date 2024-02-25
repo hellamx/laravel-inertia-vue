@@ -11,6 +11,8 @@ class MainPageController extends Controller
 {
     public function __invoke(): Response
     {
-        return Inertia::render('MainPage');
+        return Inertia::render('MainPage', [
+            'title' => 'test'
+        ]);
     }
 }
