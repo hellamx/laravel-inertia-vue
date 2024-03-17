@@ -104,10 +104,10 @@ const signUp = (e) => {
 
                 </form>
 
-                <p class="mt-6 flex justify-between text-center font-medium text-sm text-gray-500">
+                <div class="mt-6 flex justify-between text-center font-medium text-sm text-gray-500">
                     <Link href="/" class="text-blue-400 font-medium text-sm hover:underline ms-1">На главную</Link>
                     <Link href="/login" class="text-blue-400 hover:underline ms-1">Авторизация</Link>
-                </p>
+                </div>
 
                 <Logo class="mx-auto mt-8"></Logo>
             </div>
