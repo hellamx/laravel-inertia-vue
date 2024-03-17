@@ -26,10 +26,10 @@
 <template>
 
     <Header></Header>
+<!--
+    <TheMenu></TheMenu>-->
 
-    <TheMenu></TheMenu>
-
-<!--    <Hero></Hero>
+    <Hero></Hero>
 
     <Upload></Upload>
 
@@ -37,7 +37,7 @@
 
     <PaymentTypes></PaymentTypes>
 
-    <Footer></Footer>-->
+    <Footer></Footer>
 
 <!--    <Login></Login>-->
 
