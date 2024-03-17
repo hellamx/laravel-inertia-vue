@@ -7,25 +7,50 @@ import validation from '@/assets/js/validation';
 
 import langRu from '@/lang/ru/client.json';
 
-const setValue = (e) => {
-
-    validate[e.target.id].value = e.target.value;
-
-    if (!validate[e.target.id].value.length)
-        (validate[e.target.id].error = true), (validate[e.target.id].errorMessage = langRu.errors.required);
-    else (validate[e.target.id].error = false), (validate[e.target.id].errorMessage = '');
-
-    if (e.target.id === 'email') {
-        if (!validation.email(e.target.value))
-            (validate.email.error = true),
-                (validate.email.errorMessage = langRu.errors.email_invalid)
-        else
-            (validate.email.error = false),
-                (validate.email.errorMessage = '')
-    }
+// Поля для валидации [id => minLength]
+const fields = {
+    email: undefined,
+    login: 4,
+    password: 8,
 }
 
-const validate = reactive({
+const validate = (e) => {
+
+    // Устанавливаем значение
+    validateState[e.target.id].value = e.target.value;
+
+    // Проверка на обязательное заполнение
+    if (!validateState[e.target.id].value.length)
+        setFieldIsInvalid(e.target.id, 'required');
+    else
+        setFieldIsValid(e.target.id);
+
+    // Проверка полей
+    for (let field in fields) {
+        if (typeof fields[field] !== 'undefined') {
+            if (validateState[field].value.length < fields[field])
+                setFieldIsInvalid(field, field + '_min');
+        } else {
+            if (!validation.email(validateState[field].value))
+                setFieldIsInvalid(field, 'email_invalid');
+            else
+                setFieldIsValid(field);
+        }
+    }
+
+}
+
+const setFieldIsValid = (name) => {
+    validateState[name].error = false;
+    validateState[name].errorMessage = '';
+}
+
+const setFieldIsInvalid = (name, errorName) => {
+    validateState[name].error = true;
+    validateState[name].errorMessage = langRu.errors[errorName];
+}
+
+const validateState = reactive({
     login: {
         value: '',
         error: false,
@@ -45,15 +70,16 @@ const validate = reactive({
 
 const signUp = (e) => {
 
-    for (let key in validate) {
-        if (validate[key].error) continue;
+    for (let key in validateState) {
+        if (validateState[key].error) continue;
 
-        if (!validate[key].value.length)
-            (validate[key].error = true), (validate[key].errorMessage = langRu.errors.required);
-        else (validate[key].error = false), (validate[key].errorMessage = "");
+        if (!validateState[key].value.length)
+            setFieldIsInvalid(key, 'required');
+        else
+            setFieldIsValid(key);
     }
 
-    if (validate.login.error || validate.email.error || validate.password.error) return;
+    if (validateState.login.error || validateState.email.error || validateState.password.error) return;
 
     alert('ОТПРАВЛЕНО');
 };
@@ -75,16 +101,28 @@ const signUp = (e) => {
                             <label for="login" class="block text-sm font-medium leading-6 text-gray-900">Логин</label>
                         </div>
                         <div class="mt-2">
-                            <input id="login" @change="setValue" name="login" type="text" :class="`input-base ${ (validate.login.error) ? '--invalid' : '' }`">
-                            <span v-if="validate.login.error" class="text-sm block mt-2 font-medium text-red-500">{{ validate.login.errorMessage }}</span>
+                            <input
+                                id="login"
+                                @change="validate"
+                                name="login"
+                                type="text"
+                                :class="`input-base ${ (validateState.login.error) ? '--invalid' : (validateState.login.value.length ? '--valid' : '') }`">
+
+                            <span v-if="validateState.login.error" class="text-sm block mt-2 font-medium text-red-500">{{ validateState.login.errorMessage }}</span>
                         </div>
                     </div>
 
                     <div>
                         <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
                         <div class="mt-2">
-                            <input id="email" @change="setValue" name="email" type="text" :class="`input-base ${ (validate.email.error) ? '--invalid' : '' }`">
-                            <span v-if="validate.email.error" class="text-sm block mt-2 font-medium text-red-500">{{ validate.email.errorMessage }}</span>
+                            <input
+                                id="email"
+                                @change="validate"
+                                name="email"
+                                type="text"
+                                :class="`input-base ${ (validateState.email.error) ? '--invalid' : (validateState.email.value.length ? '--valid' : '') }`">
+
+                            <span v-if="validateState.email.error" class="text-sm block mt-2 font-medium text-red-500">{{ validateState.email.errorMessage }}</span>
                         </div>
                     </div>
 
@@ -93,8 +131,13 @@ const signUp = (e) => {
                             <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Пароль</label>
                         </div>
                         <div class="mt-2">
-                            <input id="password" @change="setValue" name="password" type="password"  :class="`input-base ${ (validate.password.error) ? '--invalid' : '' }`">
-                            <span v-if="validate.password.error" class="text-sm block mt-2 font-medium text-red-500">{{ validate.password.errorMessage }}</span>
+                            <input
+                                id="password"
+                                @change="validate"
+                                name="password"
+                                type="password"
+                                :class="`input-base ${ (validateState.password.error) ? '--invalid' : (validateState.password.value.length ? '--valid' : '') }`">
+                            <span v-if="validateState.password.error" class="text-sm block mt-2 font-medium text-red-500">{{ validateState.password.errorMessage }}</span>
                         </div>
                     </div>
 

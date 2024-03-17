@@ -4,4 +4,8 @@
     &.--invalid {
         @apply transition-all duration-100 ring-red-500;
     }
+
+    &.--valid {
+        @apply transition-all duration-100 ring-green-400;
+    }
 }
