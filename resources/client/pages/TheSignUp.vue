@@ -1,53 +1,12 @@
 <script setup>
 import Logo from '@/assets/icons/logo_dark.svg?component'
 
-import { reactive } from "vue";
+import { reactive } from 'vue';
 import { Link } from '@inertiajs/vue3';
 import validation from '@/assets/js/validation';
 
-import langRu from '@/lang/ru/client.json';
-
-// Поля для валидации [id => minLength]
-const fields = {
-    email: undefined,
-    login: 4,
-    password: 8,
-}
-
 const validate = (e) => {
-
-    // Устанавливаем значение
-    validateState[e.target.id].value = e.target.value;
-
-    // Проверка на обязательное заполнение
-    if (!validateState[e.target.id].value.length)
-        setFieldIsInvalid(e.target.id, 'required');
-    else
-        setFieldIsValid(e.target.id);
-
-    // Проверка полей
-    for (let field in fields) {
-        if (typeof fields[field] !== 'undefined') {
-            if (validateState[field].value.length < fields[field])
-                setFieldIsInvalid(field, field + '_min');
-        } else {
-            if (!validation.email(validateState[field].value))
-                setFieldIsInvalid(field, 'email_invalid');
-            else
-                setFieldIsValid(field);
-        }
-    }
-
-}
-
-const setFieldIsValid = (name) => {
-    validateState[name].error = false;
-    validateState[name].errorMessage = '';
-}
-
-const setFieldIsInvalid = (name, errorName) => {
-    validateState[name].error = true;
-    validateState[name].errorMessage = langRu.errors[errorName];
+    validation.validate(e, validateState);
 }
 
 const validateState = reactive({
@@ -55,16 +14,19 @@ const validateState = reactive({
         value: '',
         error: false,
         errorMessage: '',
+        minLength: 4,
     },
     email: {
         value: '',
         error: false,
         errorMessage: '',
+        minLength: undefined,
     },
     password: {
         value: '',
         error: false,
         errorMessage: '',
+        minLength: 8,
     },
 });
 
@@ -74,9 +36,9 @@ const signUp = (e) => {
         if (validateState[key].error) continue;
 
         if (!validateState[key].value.length)
-            setFieldIsInvalid(key, 'required');
+            validation.setFieldIsInvalid(key, 'required', validateState);
         else
-            setFieldIsValid(key);
+            validation.setFieldIsValid(key, validateState);
     }
 
     if (validateState.login.error || validateState.email.error || validateState.password.error) return;
@@ -98,7 +60,7 @@ const signUp = (e) => {
 
                     <div>
                         <div class="flex items-center justify-between">
-                            <label for="login" class="block text-sm font-medium leading-6 text-gray-900">Логин</label>
+                            <label for="login" class="block text-sm font-medium text-gray-900">Логин</label>
                         </div>
                         <div class="mt-2">
                             <input
@@ -113,7 +75,7 @@ const signUp = (e) => {
                     </div>
 
                     <div>
-                        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+                        <label for="email" class="block text-sm font-medium text-gray-900">Email</label>
                         <div class="mt-2">
                             <input
                                 id="email"
@@ -128,7 +90,7 @@ const signUp = (e) => {
 
                     <div>
                         <div class="flex items-center justify-between">
-                            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Пароль</label>
+                            <label for="password" class="block text-sm font-medium text-gray-900">Пароль</label>
                         </div>
                         <div class="mt-2">
                             <input
