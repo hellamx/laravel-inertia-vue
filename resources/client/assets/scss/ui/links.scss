@@ -1,0 +1,13 @@
+.link-light {
+    @apply text-white-100 block;
+
+    &.active {
+        @apply text-blue-300;
+    }
+
+
+    &:hover {
+        @apply text-blue-300;
+       //    @apply lg:hover:text-[#007bff] link-light block font-semibold text-[15px];
+    }
+}

@@ -1,8 +1,42 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+// Инициализируем tailwindcss
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+// Импортируем шрифты
+@import "fonts";
 
-body {
-  background: #718096;
+// Импортируем стили ui компонентов
+@import '@/assets/scss/ui/buttons';
+@import '@/assets/scss/ui/links';
+@import '@/assets/scss/ui/input';
+
+// Базовые стили
+html, body, #app {
+    background: #F8F9FA;
+    font-family: $font;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
+
+// Скроллбар
+body::-webkit-scrollbar {
+    width: 7px;
+
+    &-track {
+        background-color: rgba(#fff, 0.9);
+    }
+
+    &-thumb {
+        background-color: #60a5fa;
+        border-radius: 5px;
+    }
+}
+
+// Импортируем компоненты
+@import '@/assets/scss/components/header';
+@import '@/assets/scss/components/hero';
+@import '@/assets/scss/components/fastUpload';
+@import '@/assets/scss/components/prices';
+@import '@/assets/scss/components/paymentTypes';

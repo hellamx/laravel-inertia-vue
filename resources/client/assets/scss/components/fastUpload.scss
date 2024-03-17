@@ -1,0 +1,7 @@
+.fast_upload {
+    @apply relative flex w-full items-center justify-center p-12 px-6 bg-dark-500 overflow-hidden;
+
+    &__wrapper {
+        @apply max-w-7xl w-full;
+    }
+}

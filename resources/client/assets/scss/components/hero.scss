@@ -1,0 +1,11 @@
+.hero {
+    @apply shadow-md px-6 sm:px-56 relative isolate overflow-hidden w-full py-24 sm:py-32;
+}
+
+.hero-wrapper {
+    @apply max-w-screen-2xl flex items-center justify-between relative mx-auto min-h-96;
+}
+
+.hero__ui--block {
+    @apply flex flex-wrap justify-center bg-white-100 -m-2;
+}

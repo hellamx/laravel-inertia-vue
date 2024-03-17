@@ -1,0 +1,7 @@
+.payment-types {
+    @apply shadow-md px-6 sm:px-56 relative isolate overflow-hidden w-full py-24 sm:py-32;
+
+    &__wrapper {
+        @apply max-w-screen-2xl flex items-center justify-between relative mx-auto;
+    }
+}

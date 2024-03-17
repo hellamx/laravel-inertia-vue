@@ -5,19 +5,50 @@
     "src": "resources/admin/js/admin.js"
   },
   "resources/client/app.css": {
-    "file": "assets/app-6b3da973.css",
+    "file": "assets/app-784ab4c2.css",
     "src": "resources/client/app.css"
   },
   "resources/client/app.js": {
-    "css": [
-      "assets/app-6b3da973.css"
+    "assets": [
+      "assets/upload__banner-6e9efe10.png"
     ],
-    "file": "assets/app-6d26bfb9.js",
+    "css": [
+      "assets/app-784ab4c2.css"
+    ],
+    "file": "assets/app-e742553e.js",
     "isEntry": true,
     "src": "resources/client/app.js"
   },
+  "resources/client/assets/fonts/Rubik-Light.woff": {
+    "file": "assets/Rubik-Light-eae7e188.woff",
+    "src": "resources/client/assets/fonts/Rubik-Light.woff"
+  },
+  "resources/client/assets/fonts/Rubik-Light.woff2": {
+    "file": "assets/Rubik-Light-4c7ef138.woff2",
+    "src": "resources/client/assets/fonts/Rubik-Light.woff2"
+  },
+  "resources/client/assets/fonts/Rubik-Medium.woff": {
+    "file": "assets/Rubik-Medium-84d3a9bc.woff",
+    "src": "resources/client/assets/fonts/Rubik-Medium.woff"
+  },
+  "resources/client/assets/fonts/Rubik-Medium.woff2": {
+    "file": "assets/Rubik-Medium-ef660796.woff2",
+    "src": "resources/client/assets/fonts/Rubik-Medium.woff2"
+  },
+  "resources/client/assets/fonts/Rubik-Regular.woff": {
+    "file": "assets/Rubik-Regular-428da6a6.woff",
+    "src": "resources/client/assets/fonts/Rubik-Regular.woff"
+  },
+  "resources/client/assets/fonts/Rubik-Regular.woff2": {
+    "file": "assets/Rubik-Regular-a1a327ad.woff2",
+    "src": "resources/client/assets/fonts/Rubik-Regular.woff2"
+  },
+  "resources/client/assets/images/upload__banner.png": {
+    "file": "assets/upload__banner-6e9efe10.png",
+    "src": "resources/client/assets/images/upload__banner.png"
+  },
   "resources/client/assets/scss/main.scss": {
-    "file": "assets/main-22de414a.css",
+    "file": "assets/main-58b66912.css",
     "isEntry": true,
     "src": "resources/client/assets/scss/main.scss"
   }

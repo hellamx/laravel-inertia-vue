@@ -1,0 +1,7 @@
+.payment-types {
+    @apply relative pt-6 pb-6 overflow-hidden w-full shadow-none;
+}
+
+.payment-types__wrapper {
+    @apply max-w-7xl flex items-center justify-between relative mx-auto;
+}
