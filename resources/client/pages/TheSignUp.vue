@@ -114,7 +114,7 @@ const signUp = (e) => {
                     <Link href="/login" class="text-blue-400 hover:underline ms-1">Авторизация</Link>
                 </div>
 
-                <Logo class="mx-auto mt-8"></Logo>
+                <Logo class="mx-auto mt-10"></Logo>
             </div>
         </div>
     </div>

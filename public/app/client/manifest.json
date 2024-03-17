@@ -15,7 +15,7 @@
     "css": [
       "assets/app-784ab4c2.css"
     ],
-    "file": "assets/app-e742553e.js",
+    "file": "assets/app-f5c6577e.js",
     "isEntry": true,
     "src": "resources/client/app.js"
   },
@@ -48,7 +48,7 @@
     "src": "resources/client/assets/images/upload__banner.png"
   },
   "resources/client/assets/scss/main.scss": {
-    "file": "assets/main-58b66912.css",
+    "file": "assets/main-e75dd05f.css",
     "isEntry": true,
     "src": "resources/client/assets/scss/main.scss"
   }

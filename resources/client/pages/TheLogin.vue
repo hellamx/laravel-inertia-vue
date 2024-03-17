@@ -94,7 +94,7 @@ const login = (e) => {
                     <Link href="/signup" class="text-blue-400 hover:underline ms-1">Регистрация</Link>
                 </p>
 
-                <Logo class="mx-auto mt-8"></Logo>
+                <Logo class="mx-auto mt-10"></Logo>
             </div>
         </div>
     </div>
